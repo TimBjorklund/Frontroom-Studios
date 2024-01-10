@@ -225,7 +225,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:../Assets/Pico SDK/PICO Unity Integration SDK 240",
+      "version": "file:../Pico SDK/PICO Unity Integration SDK 240",
       "depth": 0,
       "source": "local",
       "dependencies": {

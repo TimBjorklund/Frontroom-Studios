@@ -12,7 +12,7 @@
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.0",
     "com.unity.xr.interaction.toolkit": "2.4.3",
-    "com.unity.xr.picoxr": "file:../Assets/Pico SDK/PICO Unity Integration SDK 240",
+    "com.unity.xr.picoxr": "file:../Pico SDK/PICO Unity Integration SDK 240",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
