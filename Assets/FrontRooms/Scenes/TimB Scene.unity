@@ -403,103 +403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1061534964
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1061534965}
-  - component: {fileID: 1061534968}
-  - component: {fileID: 1061534967}
-  - component: {fileID: 1061534966}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1061534965
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061534964}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1246836376}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1061534966
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061534964}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1061534967
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061534964}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1061534968
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061534964}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1136121986
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,8 +549,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.66, z: 12.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1061534965}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -665,7 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIexNIzHKYgIAACYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMtyozAQ/BWXzusUONhe9rZLHGcPiV1xtnLhIqPBqCwkSg+/Uv73lQQYTE5Q3fPonhn4QpSrCjIt5FJS8ioIoF8j5N7Rj1FHvsAJ7wTf0Au0MZ+U6MIFYR/zjjUVFg9dmhIlaEmz33zHXHBgQcNpLmS5IDtIhNLKwjlmCiwlhXbZ3EJfI3RqEs7N8+Keo6t9y4BrkF3UOH6YPs7m0eNiHMwHGePZQziNw2gWRY71+YZnDJcVEOejKzNpu03qNtw6bCKcm0wwRlUjD+lz5e0nuFLGmrMBhGJr1wtz8QXQXaFduX7yKs8V6EagxOcnKu3U6qroj6hHWWK1r3UdMDNwM16XfP3GjkNP51KUL23XMHAddEGz/Ts+Z1jp3qT78NO9bMOPmO3xlsFnAfxNLKUwnFhSS+NSjYLJU6/UzVlSQLbv4mqtA9BU33cbdru9eu+nhNFy65CHqAY2TPhpxy4HpN3LXyvY34pqKlnUifin4APv+kfVEM9UKm2ppiF36rbCSBeKFn5mzozRiZAcPNxoroBjps9rW0YPFzjgem0HzDN2n0/TvOHar2KQ4uEuPggG1Focb8tShTi+gipWRjPKoRPtiDc7p0RwXt9XfyZt2sbIHGe9tJ2h5P600BZPAjKZxlEUzEIcTMePP3McTWOIM4ijeD5B/vYotz4xW9dCm/HYrfVnwu2htb+V0VLiyh87kfi4pJdS9GZOeS42mQTgq/sSCqTtYj9KsiDUTmgDWlPuF46+UsREtgeS3gql3uripCVOuyopquhBaIekKPE/kxQ5+HbLawkHCkfXvC12Rdf/UEsDBBQAAAgIAAAIIey/wSPibQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSUqKRQYqRqaWJiYGZYaKBqa6xRVqiiallqmVyqqWJpbmRUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIexNIzHKYgIAACYFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIey/wSPibQAAAHgAAAAJACQAAAAAAAAAAAAAAK8CAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAZwMAAAAA
+    dataString: UEsDBBQAAAgIAAAIIez4nUCibQIAADAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVF1zojAU/StOnlcHFLXs2y61dh/aOnV3+sJLJBfJGBImH1Xb8b9vEoJQ+wRzzrlf5174RJSrBgot5FpS8iQIoJ8j5N7Rj1FPPsIJ7wXf0g/oNG+U6MqJsNe8Yk2FxWMXpkQNWtLiF98zJ44saDgthaxXZA+ZUFpZuMRMgaWk0C6aW+hzhE4h4ByeH+45uti3ArgG2avG6WQ+WyyT2WocLUPEOJpEsyS9WybzEDteTOJ5GieLJHE6n8nwguG6AeIm6hNOu7rTtiC3swaFm6sQjFEVGkX63HgjMtwoY8e0AkKxHdy36PQV0H2lXbph8EtZKtBhOInP91Ra/9qs6LdoTa2xOrR9vWNm4GpBm/LpGzuOPV1KUT92VePIVdAVLQ6v+FxgpQeeD+H7r20bfsTsgHcM3irgz2ItheHEkloaF2oUTO8Hqa6TZRUUh17X9noDmub7luN+yxc/+yljtN45ZJK0wJYJ73bqYkDavfyxDfurUSGTRV0T/xT8xfvheQXigUqlLRUKctfdThjppGjlPXPDGJ0JycHDoecGOGb6vLFp9O0Cb7hB2RvmAbsPKRQPXPd93IR4uNdH0Q21EcfrslQljk+gqhejGeXQN+2IZ+tTJjhv72voSRe2NbLExSBsbyj5elpoh6cRmc7TJIkWMY7m49ldiZN5CmkBaZIup8jfHuV2Tsw2baPBHru1oSfcHlr3gxmtJW78sROJj2v6UYuB55SXYltIAP7yNYUCaavYj5KsCLUObUFryv3C0WeOmCgOQPJrotyPujppifM+S44a+i60Q3KU+d9Kjhx8veWNhHcKR1e8S3ZBl/9QSwMEFAAACAgAAAgh7L/BI+JtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJSopFBipGppYmJgZlhooGprrFFWqKJqWWqZXKqpYmluZFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7PidQKJtAgAAMAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7L/BI+JtAAAAeAAAAAkAJAAAAAAAAAAAAAAAugIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAByAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
