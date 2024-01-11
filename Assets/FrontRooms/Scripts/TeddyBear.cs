@@ -48,15 +48,10 @@ public class TeddyBear : MonoBehaviour
         if (collision.gameObject.name == "Left Controller")
         {
             Destroy(teddyObject); //Förstör också canvas etc....
-          //  teddycounter.teddyTexter -= 1;
+          //teddycounter.teddyTexter -= 1;
             teddycounter.teddysleft--;
         }
-        if (collision.gameObject.name == "Right Controller")
-        {
-            Destroy(teddyObject);
-         //   teddycounter.teddyTexter -= 1;
-            teddycounter.teddysleft--;
-        }
+     
 
     }
 

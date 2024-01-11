@@ -8,28 +8,21 @@ using UnityEngine.XR;
 
 public class TeddyCounter : MonoBehaviour
 {
-    [SerializeField]
-    GameObject teddyObject;
 
-    public int teddyTexter;
     public Text teddyCount;
 
     public int teddysleft = 7;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        teddyTexter = teddysleft;
-        teddyCount.text = "" + teddyTexter;
+        
+        teddyCount.text = "" + teddysleft;
 
         if (teddysleft == 0)
         {
-            //Winner.PNG
+            teddyCount.text = "Winner Winner Kyckling Dinner!";
         }
+
+
     }
 }
