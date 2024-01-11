@@ -43,5 +43,14 @@ public class Camerashake : MonoBehaviour
 			shakeDuration = 0f;
 			camTransform.localPosition = originalPos;
 		}
+		/*if (shakeDuration > 0) {
+gameObject.transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+shakeDuration -= Time.deltaTime * decreaseFactor;
+shakeAmount -= Time.deltaTime * decreaseFactor;
+if (shakeAmount <= 0) shakeAmount = 0;
+} else {
+shakeDuration = 0f;
+gameObject.transform.localPosition = originalPos;
+}*/
 	}
 }
