@@ -25,7 +25,7 @@ public class KeyHoleScript : MonoBehaviour
         }
     }
 
-    private void OpenDoor()
+    public void OpenDoor()
     {
         if (Doorholder.transform.rotation.eulerAngles.y < 90)
         {
