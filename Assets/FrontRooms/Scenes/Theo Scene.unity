@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 633072927}
   - component: {fileID: 633072926}
   - component: {fileID: 633072925}
-  - component: {fileID: 633072924}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
@@ -143,18 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!156049354 &633072924
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633072923}
-  m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!65 &633072925
 BoxCollider:
   m_ObjectHideFlags: 0
