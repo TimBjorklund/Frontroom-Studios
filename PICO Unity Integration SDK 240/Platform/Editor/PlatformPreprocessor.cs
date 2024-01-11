@@ -17,6 +17,7 @@ using UnityEngine;
 
 namespace Pico.Platform.Editor
 {
+#if (UNITY_EDITOR)
     public class PlatformPreprocessor : IPreprocessBuildWithReport
     {
         public int callbackOrder
@@ -33,4 +34,5 @@ namespace Pico.Platform.Editor
             }
         }
     }
+#endif
 }
