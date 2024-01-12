@@ -9,8 +9,10 @@ public class FurnitureSpawnerScript : MonoBehaviour
     public int roomSizeX = 15;
     public int roomSizeZ = 15;
 
-    [SerializeField] GameObject[] furniture; GameObject[] wallFurniture;
-
+    [SerializeField]  
+    GameObject[] furniture;
+    [SerializeField]
+    GameObject[] wallFurniture;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,31 +28,33 @@ public class FurnitureSpawnerScript : MonoBehaviour
     {
         //x = 0, x = 15, z = 0, z = 15 - det här är vägg slots, när x = 0 så är alla z värden vägg.
 
-        for (int x = 0; x < roomSizeX - 1; x++) //kanske kan byta ut 0 och 15 med "lowerbound" public variabel och samma för higher bound
+        for (int x = 1; x < roomSizeX; x++) //kanske kan byta ut 0 och 15 med "lowerbound" public variabel och samma för higher bound
         {
-            for (int z = 0; z < roomSizeX - 1; z++) //värdena kommer göra systemet utbyggbart 
+            for (int z = 1; z < roomSizeZ; z++) //värdena kommer göra systemet utbyggbart 
             {
+                Debug.Log("can spawn");
                 var randomSpawn = Random.Range(1, spawnChanse);
                 var randomFurniture = Random.Range(0, furniture.Length);
                 var randomWallFurniture = Random.Range(0, wallFurniture.Length);
 
-                if (randomSpawn == spawnChanse)
+                if (randomSpawn == 1)
                 {
-                    if (x == 0 || x == 0 && z == 0)
+                    Debug.Log("spawn");
+                    if (x == 1 || x == 1 && z == 1)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
                     }
-                    else if (z == 0)
+                    else if (z == 1)
                     {
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 90));
+                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 270, 0));
                     }
-                    else if (x == roomSizeX)
+                    else if (x == roomSizeX - 1)
                     {
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 180));
+                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 180, 0));
                     }
-                    else if (z == roomSizeZ || z == roomSizeZ && x == roomSizeX)
+                    else if (z == roomSizeZ - 1 || z == roomSizeZ - 1 && x == roomSizeX - 1)
                     {
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 270));
+                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 90, 0));
                     }
                     else
                     {
