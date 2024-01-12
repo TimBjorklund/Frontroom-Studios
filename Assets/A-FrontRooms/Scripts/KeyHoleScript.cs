@@ -17,17 +17,30 @@ public class KeyHoleScript : MonoBehaviour
     [SerializeField]
     GameObject Lock;
 
-    Vector3 temp = new Vector3(0, 1f * Time.deltaTime, 0);
+
+
+
+    [SerializeField]
+    private float  floorPoint;
+
+
+
 
     void Update()
     {
         if (socket.hasHover)
         {
-            if (Lock.transform.position.y > 0.43)
+            if (Lock.transform.position.y > floorPoint)
             {
+                Vector3 temp = new Vector3(0, 3f * Time.deltaTime, 0);
                 Lock.transform.position -= temp;
             }
-              
+            if (Lock.transform.rotation.eulerAngles.z < 90)
+            {
+                Lock.transform.Rotate(0.0f, 0.0f, 180.0f * Time.deltaTime);
+            }
+
+
             OpenDoor();
         }
     }
@@ -41,6 +54,8 @@ public class KeyHoleScript : MonoBehaviour
         }
         
     }
+
+
 
 
 }

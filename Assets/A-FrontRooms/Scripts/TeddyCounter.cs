@@ -11,7 +11,7 @@ public class TeddyCounter : MonoBehaviour
 
     public Text teddyCount;
 
-    public int teddysleft = 7;
+    public static int teddysleft = 7;
 
     void Update()
     {
@@ -24,5 +24,11 @@ public class TeddyCounter : MonoBehaviour
         }
 
 
+    }
+
+    public void CollectBear()
+    {
+        teddysleft--;
+        teddyCount.text = " you have " + teddysleft;
     }
 }
