@@ -9,6 +9,8 @@ public class FurnitureSpawnerScript : MonoBehaviour
     public int roomSizeX = 15;
     public int roomSizeZ = 15;
 
+    bool bookShelfSpawned = false;
+
     [SerializeField]  
     GameObject[] furniture;
     [SerializeField]
@@ -40,19 +42,19 @@ public class FurnitureSpawnerScript : MonoBehaviour
                 if (randomSpawn == 1)
                 {
                     Debug.Log("spawn");
-                    if (x == 1 || x == 1 && z == 1)
+                    if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
                     }
-                    else if (z == 1)
+                    else if (z == 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 270, 0));
                     }
-                    else if (x == roomSizeX - 1)
+                    else if (x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 180, 0));
                     }
-                    else if (z == roomSizeZ - 1 || z == roomSizeZ - 1 && x == roomSizeX - 1)
+                    else if (z == roomSizeZ - 1 && !bookShelfSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 90, 0));
                     }
