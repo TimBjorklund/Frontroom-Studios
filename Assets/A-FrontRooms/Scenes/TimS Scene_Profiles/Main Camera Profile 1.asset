@@ -15,10 +15,10 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   intensity:
     overrideState: 0
-    value: 35
+    value: 48
   intensityX:
     overrideState: 0
     value: 1
@@ -56,9 +56,9 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.52
+    value: 0
   fastMode:
-    overrideState: 1
+    overrideState: 0
     value: 1
 --- !u!114 &-3946207183338203765
 MonoBehaviour:
@@ -77,17 +77,17 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   colored:
-    overrideState: 0
+    overrideState: 1
     value: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.79
   size:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.53
   lumContrib:
-    overrideState: 0
-    value: 0.8
+    overrideState: 1
+    value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
