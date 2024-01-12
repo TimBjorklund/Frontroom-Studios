@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/A-FrontRooms/Scenes/TimB Scene.unity
     guid: 9e312480fce8ee447a383249e174d031
+  - enabled: 1
+    path: Assets/A-FrontRooms/Scenes/Elliot Scene.unity
+    guid: 1f42cad38fa322043ab632f40d4d6517
   m_configObjects:
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: e5111661724f2534291c5041c7b7b794, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a9a406a7ee1a597479d14d246b29b9bd, type: 2}

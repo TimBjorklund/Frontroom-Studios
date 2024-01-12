@@ -29,8 +29,8 @@ public class TeddyBear : MonoBehaviour
     {
         if (collision.gameObject.name == "Left Controller")
         {
-            Destroy(teddyObject); 
-            teddycounter.teddysleft--;
+            Destroy(teddyObject);
+            teddycounter.CollectBear();
         }
      
 
