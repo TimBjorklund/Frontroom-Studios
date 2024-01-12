@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room_Grid_Script : MonoBehaviour
+public class FurnitureSpawnerScript : MonoBehaviour
 {
     public int spawnChanse = 15;
 
@@ -20,15 +20,15 @@ public class Room_Grid_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void SpawnInterior()
     {
         //x = 0, x = 15, z = 0, z = 15 - det här är vägg slots, när x = 0 så är alla z värden vägg.
 
-        for (int x = 0; x < roomSizeX; x++) //kanske kan byta ut 0 och 15 med "lowerbound" public variabel och samma för higher bound
+        for (int x = 0; x < roomSizeX - 1; x++) //kanske kan byta ut 0 och 15 med "lowerbound" public variabel och samma för higher bound
         {
-            for(int z = 0; z < roomSizeX; z++) //värdena kommer göra systemet utbyggbart 
+            for (int z = 0; z < roomSizeX - 1; z++) //värdena kommer göra systemet utbyggbart 
             {
                 var randomSpawn = Random.Range(1, spawnChanse);
                 var randomFurniture = Random.Range(0, furniture.Length);
