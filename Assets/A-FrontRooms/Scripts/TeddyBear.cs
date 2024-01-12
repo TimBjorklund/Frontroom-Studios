@@ -9,14 +9,11 @@ using UnityEngine.XR;
 public class TeddyBear : MonoBehaviour
 {
 
+
+    //Ska kunna fungera för 7 texter till 7 teddybjörnar
     [SerializeField]
     GameObject teddyObject;
-    /*
-    public int teddyTexter;
-    public Text teddyCount;
 
-    public int teddysleft = 7;
-    */
     [SerializeField]
     TeddyCounter teddycounter;
 
@@ -25,30 +22,14 @@ public class TeddyBear : MonoBehaviour
     {
 
         teddycounter.GetComponent<TeddyCounter>();
-        //  teddyCount = GetComponentInChildren<Text>();
-       // teddycounter = GetComponent<TeddyCounter>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        teddyTexter = teddysleft;
-        teddyCount.text = "" + teddyTexter;
-
-        if (teddysleft == 0)
-        {
-            //Winner.PNG
-        }
-        */
     }
         
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Left Controller")
         {
-            Destroy(teddyObject); //Förstör också canvas etc....
-          //teddycounter.teddyTexter -= 1;
+            Destroy(teddyObject); 
             teddycounter.teddysleft--;
         }
      

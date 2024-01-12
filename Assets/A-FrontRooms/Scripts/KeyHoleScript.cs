@@ -14,16 +14,24 @@ public class KeyHoleScript : MonoBehaviour
 
     [SerializeField]
     GameObject Doorholder;
+    [SerializeField]
+    GameObject Lock;
 
-    private int Openingspeed = 1;
+    Vector3 temp = new Vector3(0, 1f * Time.deltaTime, 0);
 
     void Update()
     {
         if (socket.hasHover)
         {
+            if (Lock.transform.position.y > 0.43)
+            {
+                Lock.transform.position -= temp;
+            }
+              
             OpenDoor();
         }
     }
+    
 
     public void OpenDoor()
     {
