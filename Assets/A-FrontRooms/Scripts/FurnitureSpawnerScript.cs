@@ -9,6 +9,9 @@ public class FurnitureSpawnerScript : MonoBehaviour
     public int roomSizeX = 15;
     public int roomSizeZ = 15;
 
+    int bShelfX = 0;
+    int bShelfZ = 0;
+
     bool bookShelfSpawned = false;
 
     [SerializeField]  
@@ -36,31 +39,71 @@ public class FurnitureSpawnerScript : MonoBehaviour
             {
                 Debug.Log("can spawn");
                 var randomSpawn = Random.Range(1, spawnChanse);
-                var randomFurniture = Random.Range(0, furniture.Length);
-                var randomWallFurniture = Random.Range(0, wallFurniture.Length);
-
+                
                 if (randomSpawn == 1)
                 {
+                    var randomFurniture = Random.Range(0, furniture.Length);
+                    var randomWallFurniture = Random.Range(0, wallFurniture.Length);
                     Debug.Log("spawn");
+
+                    if (x == 1 || z == 1 || x == roomSizeX - 1 || z == roomSizeZ - 1)
+                    {
+                        bookShelfSpawned = true;
+                    }
+                    else if (bShelfX + 2 <= x || bShelfZ + 1 <= z)
+                    {
+                        bookShelfSpawned = false;
+                        Debug.Log("can spawn bookshelf");
+                    }
+                    else
+                    {
+                        bookShelfSpawned = false;
+                    }
+
                     if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
+                        if (randomWallFurniture == 0)
+                        {
+                            bookShelfSpawned = true;
+                            bShelfX = x;
+                            bShelfZ = z;
+                        }
                     }
                     else if (z == 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 270, 0));
+                        if (randomWallFurniture == 0)
+                        {
+                            bookShelfSpawned = true;
+                            bShelfX = x;
+                            bShelfZ = z;
+                        }
                     }
                     else if (x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 180, 0));
+                        if (randomWallFurniture == 0)
+                        {
+                            bookShelfSpawned = true;
+                            bShelfX = x;
+                            bShelfZ = z;
+                        }
                     }
                     else if (z == roomSizeZ - 1 && !bookShelfSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 90, 0));
+                        if (randomWallFurniture == 0)
+                        {
+                            bookShelfSpawned = true;
+                            bShelfX = x;
+                            bShelfZ = z;
+                        }
                     }
                     else
                     {
-                        Instantiate(furniture[randomFurniture], new Vector3(x, 0, z), Quaternion.identity);
+                        var randomRotation = Random.Range(0, 359);
+                        Instantiate(furniture[randomFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, randomRotation, 0));
                         //random chance, = bool något blir true
                         //om bool är true, instantiate objekt från en objekt array
 
