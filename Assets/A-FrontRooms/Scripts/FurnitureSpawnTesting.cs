@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FurnitureSpawnTesting : MonoBehaviour
+public class FurnitureSpawnTesting : AddedCommands
 {
     public int spawnChance = 15;
 
@@ -27,6 +27,9 @@ public class FurnitureSpawnTesting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        roomSizeX = Random.Range(5,30);
+        roomSizeZ = Random.Range(5, 30);
+
         canSpawn = new int[roomSizeX, roomSizeZ];
         for (int x = 0; x < roomSizeX; x++)
         {
@@ -72,7 +75,7 @@ public class FurnitureSpawnTesting : MonoBehaviour
                     if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
                     {
                         Debug.Log("spawn bookshelf");
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
+                        ImprovedInstantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), new Vector3(0, 0, 0));
                         if (randomWallFurniture == 0)
                         {
                             bookShelfSpawned = true;
@@ -83,7 +86,7 @@ public class FurnitureSpawnTesting : MonoBehaviour
                     else if (z == 1 && !bookShelfSpawned)
                     {
                         Debug.Log("spawn bookshelf");
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 270, 0));
+                        ImprovedInstantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), new Vector3(0, 270, 0));
                         if (randomWallFurniture == 0)
                         {
                             bookShelfSpawned = true;
@@ -94,7 +97,7 @@ public class FurnitureSpawnTesting : MonoBehaviour
                     else if (x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Debug.Log("spawn bookshelf");
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 180, 0));
+                        ImprovedInstantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), new Vector3(0, 180, 0));
                         if (randomWallFurniture == 0)
                         {
                             bookShelfSpawned = true;
@@ -105,7 +108,7 @@ public class FurnitureSpawnTesting : MonoBehaviour
                     else if (z == roomSizeZ - 1 && !bookShelfSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !bookShelfSpawned)
                     {
                         Debug.Log("spawn bookshelf");
-                        Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 90, 0));
+                        ImprovedInstantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), new Vector3(0, 90, 0));
                         if (randomWallFurniture == 0)
                         {
                             bookShelfSpawned = true;
@@ -116,7 +119,7 @@ public class FurnitureSpawnTesting : MonoBehaviour
                     else if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && canSpawn[x, z] == 0)
                     {
                         var randomRotation = Random.Range(0, 359);
-                        Instantiate(furniture[randomFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, randomRotation, 0));
+                        ImprovedInstantiate(furniture[randomFurniture], new Vector3(x, 0, z), new Vector3(0, randomRotation, 0));
                         randomObjectX = x;
                         randomobjectZ = z;
 
