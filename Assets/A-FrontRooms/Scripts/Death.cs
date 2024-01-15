@@ -20,7 +20,7 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 10;
+
         monster.SetActive(false);
         Camerashake.shakeDuration = 0;
         if (postProcessProfile != null)
@@ -50,11 +50,7 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            die();
-        }
+
         if(Input.GetKeyDown(KeyCode.I))
         {
             die();
