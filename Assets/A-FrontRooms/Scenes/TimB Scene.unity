@@ -8468,11 +8468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434844e0f3c8a164da7aa81ea7bfe499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 15
+  spawnChance: 1
   roomSizeX: 15
   roomSizeZ: 15
   furniture:
   - {fileID: 588814091766989737, guid: 77b0c60bf93510a4fb59e1b0e4e08199, type: 3}
+  - {fileID: 4079847810129791125, guid: a724bbf80546d12419e92760572161ce, type: 3}
   wallFurniture:
   - {fileID: 879586858387135907, guid: 93693064101b0214fa13d0fe85d8b442, type: 3}
   - {fileID: 3677591497761843536, guid: 6cbb5df460fcc504684efea4b6f35f5a, type: 3}

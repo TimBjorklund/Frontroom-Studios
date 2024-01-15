@@ -52,9 +52,9 @@ public class FurnitureSpawnTesting : MonoBehaviour
             for (int z = 1; z < roomSizeZ; z++) //värdena kommer göra systemet utbyggbart 
             {
                 Debug.Log("can spawn");
-                var randomSpawn = Random.Range(1, spawnChance);
+                var randomSpawn = Random.Range(1, 100);
 
-                if (randomSpawn == 1)
+                if (randomSpawn <= spawnChance)
                 {
                     var randomFurniture = Random.Range(0, furniture.Length);
                     var randomWallFurniture = Random.Range(0, wallFurniture.Length);
