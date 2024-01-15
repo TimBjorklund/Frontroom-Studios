@@ -14,7 +14,7 @@ namespace Pathfinding
         [SerializeField]
         Vector3 direction;
         private void Update()
-        {
+        {/*
             direction.transform.rotation.x 
             RaycastHit hit;
             Debug.DrawRay(gameObject.transform.position, direction.transform.forward, Color.red);
@@ -28,7 +28,7 @@ namespace Pathfinding
                 {
                     print("No Player in sight");
                 }
-            }
+            }*/
             //Ray LineOfSightRaycast = new Ray(gameObject.transform.position, direction);
             if (ai != null && ai.reachedDestination == true && seenPlayer == false)
             {

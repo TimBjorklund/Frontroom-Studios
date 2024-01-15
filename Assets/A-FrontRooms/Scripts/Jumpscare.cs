@@ -17,7 +17,7 @@ public class Jumpscare : MonoBehaviour
     {
         if (collision.CompareTag("MainCamera"))     //om triggern kolliderar med objectet med detectionTag så slutar fienden röra på sig
         {
-            death.die();
+            //death.die();
             //print("Jumpscare");
             //JumpscareSound.Play();
             //JumpCam.SetActive(true);
