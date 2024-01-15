@@ -5,26 +5,29 @@ using UnityEngine;
 public class WardrobeDoor : MonoBehaviour
 {
     [SerializeField]
-    GameObject Wardrobedoorholder;
+    GameObject Wardrobedoorholderright;
+
+    [SerializeField]
+    GameObject Wardrobedoorholderleft;
 
     public void OpenWardrobeDoor()
     {
 
-        if(gameObject.name == "WardrobeHolderRight")
+        if (Wardrobedoorholderright.transform.rotation.eulerAngles.x < 90)
         {
-            if (Wardrobedoorholder.transform.rotation.eulerAngles.x < 90)
-            {
-                Wardrobedoorholder.transform.Rotate(90.0f * Time.deltaTime, 0.0f, 0.0f);
-            }
+            Wardrobedoorholderright.transform.Rotate(90.0f * Time.deltaTime, 0.0f, 0.0f);
         }
+
         else
         {
-            if (Wardrobedoorholder.transform.rotation.eulerAngles.x < -90)
+            if (Wardrobedoorholderleft.transform.rotation.eulerAngles.x < -90)
             {
-                Wardrobedoorholder.transform.Rotate(-90.0f * Time.deltaTime, 0.0f, 0.0f);
+                Wardrobedoorholderleft.transform.Rotate(-90.0f * Time.deltaTime, 0.0f, 0.0f);
             }
         }
     }
+    
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Test")
