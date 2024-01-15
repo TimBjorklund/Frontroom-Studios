@@ -12,7 +12,11 @@ public class FurnitureSpawnerScript : MonoBehaviour
     int bShelfX = 0;
     int bShelfZ = 0;
 
+    int randomObjectX = 0;
+    int randomobjectZ = 0;
+
     bool bookShelfSpawned = false;
+    bool randomObjectSpawned = false;
 
     [SerializeField]  
     GameObject[] furniture;
@@ -46,22 +50,25 @@ public class FurnitureSpawnerScript : MonoBehaviour
                     var randomWallFurniture = Random.Range(0, wallFurniture.Length);
                     Debug.Log("spawn");
 
-                    if (x == 1 || z == 1 || x == roomSizeX - 1 || z == roomSizeZ - 1)
+                    if (x == 1 && z == 1 || x == roomSizeX - 1 && z == roomSizeZ - 1 || x == 1 && z == roomSizeZ - 1 || z == 1 && x == roomSizeX - 1)
                     {
                         bookShelfSpawned = true;
                     }
-                    else if (bShelfX + 2 <= x || bShelfZ + 1 <= z)
-                    {
-                        bookShelfSpawned = false;
-                        Debug.Log("can spawn bookshelf");
-                    }
-                    else
+                    else if (bShelfX + 2 < x || bShelfZ + 2 < z)
                     {
                         bookShelfSpawned = false;
                     }
 
+                    if (randomObjectX + 1 < x || randomobjectZ + 1 < z)
+                    {
+                        randomObjectSpawned = false;
+                        Debug.Log("x = " + x + ", obj x = " + randomObjectX);
+                        Debug.Log("z = " + z + ", obj z = " + randomobjectZ);
+                    }
+
                     if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
                     {
+                        Debug.Log("spawn bookshelf");
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0));
                         if (randomWallFurniture == 0)
                         {
@@ -72,6 +79,7 @@ public class FurnitureSpawnerScript : MonoBehaviour
                     }
                     else if (z == 1 && !bookShelfSpawned)
                     {
+                        Debug.Log("spawn bookshelf");
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 270, 0));
                         if (randomWallFurniture == 0)
                         {
@@ -82,6 +90,7 @@ public class FurnitureSpawnerScript : MonoBehaviour
                     }
                     else if (x == roomSizeX - 1 && !bookShelfSpawned)
                     {
+                        Debug.Log("spawn bookshelf");
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 180, 0));
                         if (randomWallFurniture == 0)
                         {
@@ -92,6 +101,7 @@ public class FurnitureSpawnerScript : MonoBehaviour
                     }
                     else if (z == roomSizeZ - 1 && !bookShelfSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !bookShelfSpawned)
                     {
+                        Debug.Log("spawn bookshelf");
                         Instantiate(wallFurniture[randomWallFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, 90, 0));
                         if (randomWallFurniture == 0)
                         {
@@ -100,12 +110,13 @@ public class FurnitureSpawnerScript : MonoBehaviour
                             bShelfZ = z;
                         }
                     }
-                    else
+                    else if(x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && !randomObjectSpawned)
                     {
                         var randomRotation = Random.Range(0, 359);
                         Instantiate(furniture[randomFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, randomRotation, 0));
-                        //random chance, = bool något blir true
-                        //om bool är true, instantiate objekt från en objekt array
+                        randomObjectSpawned = true;
+                        randomObjectX = x;
+                        randomobjectZ = z;
 
                     }
                 }
