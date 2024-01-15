@@ -13,11 +13,13 @@ public class PlayerDeath : MonoBehaviour
     public AutoExposure autoExposure;
     public ColorGrading colorGrading;
     public AudioSource audioSource;
+    public GameObject monster;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        monster.SetActive(false);
         Camerashake.shakeDuration = 0;
         if (postProcessProfile != null)
         {
@@ -59,6 +61,7 @@ public class PlayerDeath : MonoBehaviour
     }
     public void die()
     {
+        monster.SetActive(true);
         audioSource.Play();
         Camerashake.shakeDuration = 3;
         Camerashake.shakeAmount = 0.4f;
