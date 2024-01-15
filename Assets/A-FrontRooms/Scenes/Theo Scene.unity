@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e28f50d01e9fd24184088a7bbed900a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChanse: 15
+  spawnChance: 10
   roomSizeX: 15
   roomSizeZ: 15
   furniture:

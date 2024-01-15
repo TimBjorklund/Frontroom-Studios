@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FurnitureSpawnerScript : MonoBehaviour
 {
-    public int spawnChanse = 15;
+    public int spawnChance = 15;
 
     public int roomSizeX = 15;
     public int roomSizeZ = 15;
 
-    int bShelfX = 0;
-    int bShelfZ = 0;
+    int bShelfX = -10;
+    int bShelfZ = -10;
 
     int randomObjectX = 0;
     int randomobjectZ = 0;
@@ -22,9 +22,19 @@ public class FurnitureSpawnerScript : MonoBehaviour
     GameObject[] furniture;
     [SerializeField]
     GameObject[] wallFurniture;
+
+    bool[,] canSpawn;
     // Start is called before the first frame update
     void Start()
     {
+        canSpawn = new bool[roomSizeX, roomSizeZ];
+        for (int x  = 0; x < roomSizeX; x++)
+        {
+            for (int y = 0; y < roomSizeZ; y++)
+            {
+                canSpawn[x, y] = true;
+            }
+        }
         SpawnInterior();
     }
 
@@ -42,7 +52,7 @@ public class FurnitureSpawnerScript : MonoBehaviour
             for (int z = 1; z < roomSizeZ; z++) //värdena kommer göra systemet utbyggbart 
             {
                 Debug.Log("can spawn");
-                var randomSpawn = Random.Range(1, spawnChanse);
+                var randomSpawn = Random.Range(1, spawnChance);
                 
                 if (randomSpawn == 1)
                 {
@@ -57,13 +67,6 @@ public class FurnitureSpawnerScript : MonoBehaviour
                     else if (bShelfX + 2 < x || bShelfZ + 2 < z)
                     {
                         bookShelfSpawned = false;
-                    }
-
-                    if (randomObjectX + 1 < x || randomobjectZ + 1 < z)
-                    {
-                        randomObjectSpawned = false;
-                        Debug.Log("x = " + x + ", obj x = " + randomObjectX);
-                        Debug.Log("z = " + z + ", obj z = " + randomobjectZ);
                     }
 
                     if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
@@ -110,14 +113,22 @@ public class FurnitureSpawnerScript : MonoBehaviour
                             bShelfZ = z;
                         }
                     }
-                    else if(x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && !randomObjectSpawned)
+                    else if(x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && canSpawn[x, z] == true)
                     {
                         var randomRotation = Random.Range(0, 359);
                         Instantiate(furniture[randomFurniture], new Vector3(x, 0, z), Quaternion.Euler(0, randomRotation, 0));
-                        randomObjectSpawned = true;
                         randomObjectX = x;
                         randomobjectZ = z;
 
+                        canSpawn[x, z] = false;
+                        canSpawn[x + 1, z] = false;
+                        canSpawn[x - 1, z] = false;
+                        canSpawn[x, z + 1] = false;
+                        canSpawn[x, z - 1] = false;
+                        canSpawn[x + 1, z + 1] = false;
+                        canSpawn[x - 1, z + 1] = false;
+                        canSpawn[x + 1, z - 1] = false;
+                        canSpawn[x - 1, z - 1] = false;
                     }
                 }
             }
