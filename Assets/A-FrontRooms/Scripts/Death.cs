@@ -14,11 +14,13 @@ public class PlayerDeath : MonoBehaviour
     public ColorGrading colorGrading;
     public AudioSource audioSource;
     public GameObject monster;
+    float timer;
 
 
     // Start is called before the first frame update
     void Start()
     {
+
         monster.SetActive(false);
         Camerashake.shakeDuration = 0;
         if (postProcessProfile != null)
@@ -48,6 +50,7 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetKeyDown(KeyCode.I))
         {
             die();
