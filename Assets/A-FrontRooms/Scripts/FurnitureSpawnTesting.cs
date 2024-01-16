@@ -8,15 +8,18 @@ public class FurnitureSpawnTesting : AddedCommands
 
     public int roomSizeX = 15;
     public int roomSizeZ = 15;
+    public int wallHeight = 3;
 
-    int bShelfX = -10;
-    int bShelfZ = -10;
+    int wFurnitureX = -10;
+    int wFurnitureZ = -10;
 
     int randomObjectX = 0;
     int randomobjectZ = 0;
 
-    bool bookShelfSpawned = false;
-    bool randomObjectSpawned = false;
+    bool wallFurnitureSpawned = false;
+
+    public Vector3 wallLocation;
+    public GameObject wall;
 
     [SerializeField]
     GameObject[] furniture;
@@ -41,6 +44,7 @@ public class FurnitureSpawnTesting : AddedCommands
             }
         }
         currentLocation = gameObject.transform.position - new Vector3(roomSizeX / 2, 0, roomSizeZ / 2);
+        CreateWalls();
         SpawnInterior();
     }
 
@@ -48,6 +52,40 @@ public class FurnitureSpawnTesting : AddedCommands
     void Update()
     {
 
+    }
+    void CreateWalls()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == 0)
+            {
+                GameObject newObject = Instantiate(wall, currentLocation + new Vector3(roomSizeX / 2, wallHeight / 2, 0), Quaternion.identity) as GameObject;
+                newObject.transform.localScale = new Vector3(roomSizeX, wallHeight, 1.45f);
+                newObject.name = "wall 1";
+            }
+            else if (i == 1)
+            {
+                GameObject newObject = Instantiate(wall, currentLocation + new Vector3(0, wallHeight / 2, roomSizeZ / 2), Quaternion.identity) as GameObject;
+                newObject.transform.localScale = new Vector3(roomSizeZ, wallHeight, 1.45f);
+                newObject.transform.localRotation = Quaternion.Euler(0, 90, 0);
+                newObject.name = "wall 2";
+            }
+            else if (i == 2)
+            {
+                GameObject newObject = Instantiate(wall, currentLocation + new Vector3(roomSizeX / 2, wallHeight / 2, roomSizeZ), Quaternion.identity) as GameObject;
+                newObject.transform.localScale = new Vector3(roomSizeX, wallHeight, 1.45f);
+                newObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                newObject.name = "wall 3";
+            }
+            else if (i == 3)
+            {
+                GameObject newObject = Instantiate(wall, currentLocation + new Vector3(roomSizeX, wallHeight / 2, roomSizeZ / 2), Quaternion.identity) as GameObject;
+                newObject.transform.localScale = new Vector3(roomSizeZ, wallHeight, 1.45f);
+                newObject.transform.localRotation = Quaternion.Euler(0, 270, 0);
+                newObject.name = "wall 4";
+            }
+
+        }
     }
     void SpawnInterior()
     {
@@ -68,56 +106,40 @@ public class FurnitureSpawnTesting : AddedCommands
 
                     if (x == 1 && z == 1 || x == roomSizeX - 1 && z == roomSizeZ - 1 || x == 1 && z == roomSizeZ - 1 || z == 1 && x == roomSizeX - 1)
                     {
-                        bookShelfSpawned = true;
+                        wallFurnitureSpawned = true;
                     }
-                    else if (bShelfX + 2 < x || bShelfZ + 2 < z)
+                    else if (wFurnitureX + 2 < x || wFurnitureZ + 2 < z)
                     {
-                        bookShelfSpawned = false;
+                        wallFurnitureSpawned = false;
                     }
 
-                    if (x == 1 && !bookShelfSpawned || x == 1 && z == 1 && !bookShelfSpawned)
+                    if (x == 1 && !wallFurnitureSpawned || x == 1 && z == 1 && !wallFurnitureSpawned)
                     {
-                        Debug.Log("spawn bookshelf");
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 0, 0));
-                        if (randomWallFurniture == 0)
-                        {
-                            bookShelfSpawned = true;
-                            bShelfX = x;
-                            bShelfZ = z;
-                        }
+                            wallFurnitureSpawned = true;
+                            wFurnitureX = x;
+                            wFurnitureZ = z;
                     }
-                    else if (z == 1 && !bookShelfSpawned)
+                    else if (z == 1 && !wallFurnitureSpawned)
                     {
-                        Debug.Log("spawn bookshelf");
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 270, 0));
-                        if (randomWallFurniture == 0)
-                        {
-                            bookShelfSpawned = true;
-                            bShelfX = x;
-                            bShelfZ = z;
-                        }
+                            wallFurnitureSpawned = true;
+                            wFurnitureX = x;
+                            wFurnitureZ = z;
                     }
-                    else if (x == roomSizeX - 1 && !bookShelfSpawned)
+                    else if (x == roomSizeX - 1 && !wallFurnitureSpawned)
                     {
-                        Debug.Log("spawn bookshelf");
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 180, 0));
-                        if (randomWallFurniture == 0)
-                        {
-                            bookShelfSpawned = true;
-                            bShelfX = x;
-                            bShelfZ = z;
-                        }
+                            wallFurnitureSpawned = true;
+                            wFurnitureX = x;
+                            wFurnitureZ = z;
                     }
-                    else if (z == roomSizeZ - 1 && !bookShelfSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !bookShelfSpawned)
+                    else if (z == roomSizeZ - 1 && !wallFurnitureSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !wallFurnitureSpawned)
                     {
-                        Debug.Log("spawn bookshelf");
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 90, 0));
-                        if (randomWallFurniture == 0)
-                        {
-                            bookShelfSpawned = true;
-                            bShelfX = x;
-                            bShelfZ = z;
-                        }
+                            wallFurnitureSpawned = true;
+                            wFurnitureX = x;
+                            wFurnitureZ = z;
                     }
                     else if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && canSpawn[x, z] == 0)
                     {
