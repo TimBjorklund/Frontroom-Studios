@@ -10,6 +10,8 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider
 {
     bool Lower;
+    float sprintTime;
+    bool isRunning = false;
     public bool isMoving;
     public AudioSource footsteps;
     public AudioClip footsteps2;
@@ -18,6 +20,7 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
 
     protected override void Update()
     {
+        base.Update();
         if(Input.GetKey(KeyCode.L))
         {
             isMoving = true;
@@ -26,7 +29,7 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
         {
             isMoving = false;
         }
-        base.Update();
+
         if(isMoving == true)
         {
             footsteps.enabled = true;
@@ -35,6 +38,24 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
         else
         {
             footsteps.enabled = false;
+        }
+
+
+        if (isRunning == true)
+        {
+            sprintTime -= Time.deltaTime;
+        }
+        else
+        {
+            sprintTime += Time.deltaTime;
+            if (sprintTime > 5)
+            {
+                sprintTime = 5;
+            }
+        }
+        if (sprintTime <= 0)
+        {
+            Movement_StopSprint();
         }
     }
 
@@ -47,10 +68,13 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
     }
     public void Movement_Sprint()
     {
+        isRunning = true;
+
         moveSpeed = moveSpeed * 2;
     }
     public void Movement_StopSprint()
     {
+        isRunning = false;
         moveSpeed = moveSpeed / 2;
     }
     public void Moveing()
