@@ -10,6 +10,8 @@ public class VisualEffects : MonoBehaviour
     public PostProcessProfile postProcessProfile;
     float sprint;
     bool isrun;
+
+    public AudioSource violin;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,5 +63,17 @@ public class VisualEffects : MonoBehaviour
                 depthOfField.aperture.value += 5f;
             }
         }
-    }
+
+            RaycastHit _hit = new RaycastHit();
+            if (Physics.Raycast(transform.position, transform.forward, out _hit, 10f))
+            {
+                if (_hit.transform.tag == "Monster")
+                {
+                violin.Play();
+                }
+            }
+
+
+
+        }
 }
