@@ -6352,6 +6352,7 @@ MonoBehaviour:
   yR: 0
   zR: 0
   floorPoint: 0.06
+  Unlocked: 0
 --- !u!1 &1719039839
 GameObject:
   m_ObjectHideFlags: 0
@@ -8181,6 +8182,7 @@ GameObject:
   - component: {fileID: 5587057518921611202}
   - component: {fileID: 5587057518921611203}
   - component: {fileID: 5587057518921611204}
+  - component: {fileID: 5587057518921611205}
   m_Layer: 0
   m_Name: DoorHandle
   m_TagString: Untagged
@@ -8359,6 +8361,7 @@ GameObject:
   - component: {fileID: 2182503139061851253}
   - component: {fileID: 6905463079374013231}
   - component: {fileID: 6905463079374013232}
+  - component: {fileID: 6905463079374013233}
   m_Layer: 0
   m_Name: DoorHandle
   m_TagString: Untagged
@@ -8861,6 +8864,8 @@ MonoBehaviour:
   yR: 0
   zR: 90
   openingdoor: 0
+  closingdoor: 0
+  keyholescript: {fileID: 1715118641}
 --- !u!65 &5587057518921611204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8874,6 +8879,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.87654626, y: 0.11904, z: 0.17246304}
   m_Center: {x: -1.9060426, y: 4.9381037, z: 0.4125216}
+--- !u!54 &5587057518921611205
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383883272423968599}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!33 &5737323285902430015
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8922,6 +8943,8 @@ MonoBehaviour:
   yR: 0
   zR: 90
   openingdoor: 0
+  closingdoor: 0
+  keyholescript: {fileID: 1715118641}
 --- !u!65 &6905463079374013232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8935,6 +8958,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.87654597, y: 0.41859332, z: 0.621702}
   m_Center: {x: -1.9056908, y: 4.918243, z: -0.6863044}
+--- !u!54 &6905463079374013233
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760681285518484116}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!23 &6912581932050549703
 MeshRenderer:
   m_ObjectHideFlags: 0

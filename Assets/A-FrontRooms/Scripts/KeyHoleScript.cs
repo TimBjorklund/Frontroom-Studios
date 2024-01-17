@@ -28,13 +28,17 @@ public class KeyHoleScript : MonoBehaviour
     [SerializeField]
     private float  floorPoint;
 
-
-
+    public bool Unlocked = false;
 
     void Update()
     {
+        if (Lock == null)
+        {
+            Unlocked = true;
+        }
         if (socket.hasHover)
         {
+            Unlocked = true;
             if (Lock.transform.position.y > floorPoint)
             {
                 Vector3 temp = new Vector3(0, 3f * Time.deltaTime, 0);
