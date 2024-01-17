@@ -10,30 +10,44 @@ public class WardrobeDoor : MonoBehaviour
     [SerializeField]
     GameObject Wardrobedoorholderleft;
 
+    private bool Opening;
+    private void Start()
+    {
+        Opening = false;
+    }
     public void OpenWardrobeDoor()
     {
-
-        if (Wardrobedoorholderright.transform.rotation.eulerAngles.x < 90)
+        
+    
+    }
+    public void Update()
+    {
+        if (Opening == true)
         {
-            Wardrobedoorholderright.transform.Rotate(90.0f * Time.deltaTime, 0.0f, 0.0f);
-        }
-
-        else
-        {
-            if (Wardrobedoorholderleft.transform.rotation.eulerAngles.x < -90)
+            if (gameObject.name == "RightKnob")
             {
-                Wardrobedoorholderleft.transform.Rotate(-90.0f * Time.deltaTime, 0.0f, 0.0f);
+                if (Wardrobedoorholderright.transform.rotation.eulerAngles.y < 90)
+                {
+                    Wardrobedoorholderright.transform.Rotate( 0.0f, 90.0f * Time.deltaTime, 0.0f);
+                }
+            }
+            else if (gameObject.name == "LeftKnob")
+            {
+                if (Wardrobedoorholderleft.transform.rotation.eulerAngles.y > -90)
+                {
+                    Wardrobedoorholderleft.transform.Rotate( 0.0f, -90.0f * Time.deltaTime, 0.0f);
+                }
             }
         }
     }
-    
+
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Test")
         {
             print("OpeningWardrobe");
-            OpenWardrobeDoor();
+            Opening = true;
         }
 
 

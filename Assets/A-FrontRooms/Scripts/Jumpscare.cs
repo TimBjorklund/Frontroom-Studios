@@ -6,11 +6,11 @@ public class Jumpscare : MonoBehaviour
 {
    // public GameObject Player;
    // public GameObject JumpCam;
-    Death death;
+    PlayerDeath death;
     // public AudioSource JumpscareSound;
     private void Start()
     {
-        death = GetComponent<Death>();
+        death = GetComponent<PlayerDeath>();
      //  JumpCam.SetActive(false);
     }
     private void OnTriggerEnter(Collider collision)

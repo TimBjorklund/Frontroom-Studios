@@ -17,7 +17,12 @@ public class KeyHoleScript : MonoBehaviour
     [SerializeField]
     GameObject Lock;
 
-
+    [SerializeField]
+    float xR;
+    [SerializeField]
+    float yR;
+    [SerializeField]
+    float zR;
 
 
     [SerializeField]
@@ -35,26 +40,26 @@ public class KeyHoleScript : MonoBehaviour
                 Vector3 temp = new Vector3(0, 3f * Time.deltaTime, 0);
                 Lock.transform.position -= temp;
             }
-            if (Lock.transform.rotation.eulerAngles.z < 90)
+            if (Lock.transform.rotation.eulerAngles.z < 90) //90
             {
-                Lock.transform.Rotate(0.0f, 0.0f, 180.0f * Time.deltaTime);
+                Lock.transform.Rotate(xR, yR, 180.0f * Time.deltaTime); //180.0f
             }
 
 
-            OpenDoor();
+            //OpenDoor();
         }
     }
     
-
+    /*
     public void OpenDoor()
     {
-        if (Doorholder.transform.rotation.eulerAngles.y < 90)
+        if (Doorholder.transform.rotation.eulerAngles.y < yR) //90
         {
-            Doorholder.transform.Rotate(0.0f, 90.0f * Time.deltaTime, 0.0f);
+            Doorholder.transform.Rotate(xR, yR * Time.deltaTime, zR);  //90.0f
         }
         
     }
-
+    */
 
 
 
