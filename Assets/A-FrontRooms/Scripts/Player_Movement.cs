@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class Player_Movement : MonoBehaviour
 {
+    //Behöver tobias
     private UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider MP;
     public InputActionReference SpringtingActionRederence;
     public float sprintTime;
@@ -20,7 +21,7 @@ public class Player_Movement : MonoBehaviour
     {
         bool isActive = !gameObject.activeSelf;
     }
-
+    
     private void Start()
     {
         MP = gameObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider>();
