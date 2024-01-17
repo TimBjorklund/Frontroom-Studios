@@ -9,13 +9,17 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class Player_Movement : MonoBehaviour
 {
     private UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider MP;
+    public InputActionReference SpringtingActionRederence;
     public float sprintTime;
     public bool isRunning = false;
     public bool isMoving;
     public AudioSource footsteps;
     public AudioClip footsteps2;
     public AudioSource andfådd;
-    // Update is called once per frame
+    private void Toggle(InputAction.CallbackContext context)
+    {
+        bool isActive = !gameObject.activeSelf;
+    }
 
     private void Start()
     {
@@ -23,6 +27,8 @@ public class Player_Movement : MonoBehaviour
     }
     void Update()
     {
+        Movement_Sprint();
+
         if(Input.GetKey(KeyCode.L))
         {
             isMoving = true;
@@ -63,19 +69,21 @@ public class Player_Movement : MonoBehaviour
 
 
     }
-
-
-    public void Shoot(InputAction.CallbackContext context)
-    {
-        Lower = context.ReadValue<bool>();
-
-        print("Pang");
-    }
     public void Movement_Sprint()
     {
-        isRunning = true;
+        isRunning = SpringtingActionRederence.action.ReadValue<bool>();
+        if (isRunning == true)
+        {
+            MP.moveSpeed = 2;
+            print("move");
+        }
+        else
+        {
+            print("Shit");
+            MP.moveSpeed = 1;
+        }
         
-        MP.moveSpeed = MP.moveSpeed * 2;
+
     }
     public void Movement_StopSprint()
     {
