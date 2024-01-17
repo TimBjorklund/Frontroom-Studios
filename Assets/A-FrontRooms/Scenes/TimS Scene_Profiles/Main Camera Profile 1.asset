@@ -18,7 +18,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: -34
+    value: 0
   intensityX:
     overrideState: 0
     value: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 1
+    value: 0
   fastMode:
     overrideState: 0
     value: 1
@@ -162,7 +162,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 50
+    value: 0
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1426,7 +1426,7 @@ MonoBehaviour:
     value: 0
   keyValue:
     overrideState: 1
-    value: 10
+    value: 1
   eyeAdaptation:
     overrideState: 0
     value: 0
@@ -1479,7 +1479,7 @@ MonoBehaviour:
     value: 32
   focalLength:
     overrideState: 1
-    value: 79
+    value: 31.921799
   kernelSize:
     overrideState: 0
     value: 1

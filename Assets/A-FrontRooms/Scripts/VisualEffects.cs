@@ -8,10 +8,14 @@ public class VisualEffects : MonoBehaviour
 {
     public float stamina;
     public PostProcessProfile postProcessProfile;
+    float sprint;
+    bool isrun;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        GetComponent<Player_Movement>().sprintTime = sprint;
+        GetComponent<Player_Movement>().isRunning = isrun;
         FindObjectOfType<Camera>();
         if (postProcessProfile != null)
         {
@@ -33,9 +37,25 @@ public class VisualEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        DepthOfField depthOfField;
+        if (isrun)
         {
-            DepthOfField depthOfField;
+            if (postProcessProfile.TryGetSettings(out depthOfField))
+            {
+
+                depthOfField.focalLength.value += 30f * Time.deltaTime;
+            }
+        }
+        if (postProcessProfile.TryGetSettings(out depthOfField))
+        {
+            if(depthOfField.focalLength > 32)
+            {
+                depthOfField.focalLength.value -= 10f * Time.deltaTime;    
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+
             if (postProcessProfile.TryGetSettings(out depthOfField))
             {
                 depthOfField.aperture.value += 5f;

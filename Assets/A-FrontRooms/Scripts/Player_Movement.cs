@@ -10,11 +10,12 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider
 {
     bool Lower;
-    float sprintTime;
-    bool isRunning = false;
+    public float sprintTime;
+    public bool isRunning = false;
     public bool isMoving;
     public AudioSource footsteps;
     public AudioClip footsteps2;
+    public AudioSource andfådd;
     // Update is called once per frame
 
 
@@ -56,7 +57,10 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
         if (sprintTime <= 0)
         {
             Movement_StopSprint();
+            andfådd.Play();
         }
+
+
     }
 
 
