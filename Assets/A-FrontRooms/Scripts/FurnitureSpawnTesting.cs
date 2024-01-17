@@ -16,11 +16,7 @@ public class FurnitureSpawnTesting : AddedCommands
     int wFurnitureX = -10;
     int wFurnitureZ = -10;
 
-    int randomObjectX = 0;
-    int randomobjectZ = 0;
-
-    bool wallFurnitureSpawned = false;
-
+    public GameObject floor;
     public GameObject wall;
 
     [SerializeField]
@@ -34,8 +30,8 @@ public class FurnitureSpawnTesting : AddedCommands
     // Start is called before the first frame update
     void Start()
     {
-        roomSizeX = Random.Range(5,30);
-        roomSizeZ = Random.Range(5, 30);
+        roomSizeX = Random.Range(7,30);
+        roomSizeZ = Random.Range(7, 30);
 
         wallLenghtX = roomSizeX;
         wallLenghtZ = roomSizeZ;
@@ -49,6 +45,7 @@ public class FurnitureSpawnTesting : AddedCommands
             }
         }
         currentLocation = gameObject.transform.position - new Vector3(roomSizeX / 2, 0, roomSizeZ / 2);
+        CreateFloor();
         CreateWalls();
         SpawnInterior();
     }
@@ -58,45 +55,50 @@ public class FurnitureSpawnTesting : AddedCommands
     {
 
     }
+    void CreateFloor()
+    {
+        GameObject newObject = Instantiate(floor, currentLocation + new Vector3(roomSizeX / 2, -0.5f, roomSizeZ / 2), Quaternion.identity);
+        newObject.transform.localScale = new Vector3(roomSizeX, 1, roomSizeZ);
+    }
     void CreateWalls()
     {
         for (int i = 0; i < 4; i++)
         {
             if (i == 0)
             {
-                for (int wallCount = 0; wallCount < wallLenghtX; wallCount++)
+                for (int wallCount = 1; wallCount < wallLenghtX; wallCount++)
                 {
-                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, 0 /*gör tunnare väggar, t.ex -0.5, 0.95f*/), Quaternion.identity);
-                    newObject.transform.localScale = new Vector3(1, wallHeight, 1.45f);
+                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, 0.49f), Quaternion.identity);
+                    newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
                     newObject.name = "wallX1 " + wallCount;
                 }
             }
             else if (i == 1)
             {
-                for (int wallCount = 0; wallCount < wallLenghtZ; wallCount++)
+                for (int wallCount = 1; wallCount < wallLenghtZ; wallCount++)
                 {
-                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(0, wallHeight / 2, wallCount), Quaternion.identity);
-                    newObject.transform.localScale = new Vector3(1, wallHeight, 1.45f);
+                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(0.49f, wallHeight / 2, wallCount), Quaternion.identity);
+                    newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
                     newObject.transform.localRotation = Quaternion.Euler(0, 90, 0);
                     newObject.name = "wallX2 " + wallCount;
                 }
             }
             else if (i == 2)
             {
-                for (int wallCount = 0; wallCount < wallLenghtX; wallCount++)
+                for (int wallCount = 1; wallCount < wallLenghtX; wallCount++)
                 {
-                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, wallLenghtZ), Quaternion.identity);
-                    newObject.transform.localScale = new Vector3(1, wallHeight, 1.45f);
+                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, wallLenghtZ -0.49f), Quaternion.identity);
+                    newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
                     newObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
                     newObject.name = "wallX3 " + wallCount;
                 }
             }
             else if (i == 3)
             {
-                for (int wallCount = 0; wallCount < wallLenghtZ; wallCount++)
+                for (int wallCount = 1; wallCount < wallLenghtZ; wallCount++)
                 {
-                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallLenghtX, wallHeight / 2, wallCount), Quaternion.identity);
-                    newObject.transform.localScale = new Vector3(1, wallHeight, 1.45f);
+                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallLenghtX -0.49f, wallHeight / 2, wallCount), Quaternion.identity);
+                    newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
                     newObject.transform.localRotation = Quaternion.Euler(0, 270, 0);
                     newObject.name = "wallX4 " + wallCount;
                 }
@@ -123,47 +125,136 @@ public class FurnitureSpawnTesting : AddedCommands
 
                     if (x == 1 && z == 1 || x == roomSizeX - 1 && z == roomSizeZ - 1 || x == 1 && z == roomSizeZ - 1 || z == 1 && x == roomSizeX - 1)
                     {
-                        wallFurnitureSpawned = true;
-                    }
-                    else if (wFurnitureX + 2 < x || wFurnitureZ + 2 < z)
-                    {
-                        wallFurnitureSpawned = false;
+                        //wallFurnitureSpawned = true;
+                        canSpawn[x, z] = 9;
                     }
 
-                    if (x == 1 && !wallFurnitureSpawned || x == 1 && z == 1 && !wallFurnitureSpawned)
+                    if (x == 1 && canSpawn[x, z] == 0 || x == 1 && z == 1 && canSpawn[x, z] == 0)
                     {
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 0, 0));
-                            wallFurnitureSpawned = true;
-                            wFurnitureX = x;
-                            wFurnitureZ = z;
+                        //wallFurnitureSpawned = true;
+                        canSpawn[x, z] = 9;
+                        canSpawn[x, z + 1] = 9;
+                        canSpawn[x, z - 1] = 9;
+
+                        if (z == 2)
+                        {
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z + 3] = 9;
+                        }
+                        else if (z == roomSizeZ -3)
+                        {
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z - 3] = 9;
+                        }
+                        else if (z > 3 && z < roomSizeZ - 4)
+                        {
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z - 3] = 9;
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z + 3] = 9;
+                        }
+                        wFurnitureX = x;
+                        wFurnitureZ = z;
                     }
-                    else if (z == 1 && !wallFurnitureSpawned)
+
+                    else if (z == 1 && canSpawn[x, z] == 0)
                     {
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 270, 0));
-                            wallFurnitureSpawned = true;
-                            wFurnitureX = x;
-                            wFurnitureZ = z;
+                        //wallFurnitureSpawned = true;
+                        canSpawn[x, z] = 9;
+                        canSpawn[x + 1, z] = 9;
+                        canSpawn[x - 1, z] = 9;
+
+                        if (x == 2)
+                        {
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x + 3, z] = 9;
+                        }
+                        else if (x == roomSizeX - 3)
+                        {
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x - 3, z] = 9;
+                        }
+                        else if (x > 3 && x < roomSizeX - 4)
+                        {
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x - 3, z] = 9;
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x + 3, z] = 9;
+                        }
+
+                        wFurnitureX = x;
+                        wFurnitureZ = z;
                     }
-                    else if (x == roomSizeX - 1 && !wallFurnitureSpawned)
+                    else if (x == roomSizeX - 1 && canSpawn[x, z] == 0)
                     {
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 180, 0));
-                            wallFurnitureSpawned = true;
-                            wFurnitureX = x;
-                            wFurnitureZ = z;
+                        //wallFurnitureSpawned = true;
+                        canSpawn[x, z] = 9;
+                        canSpawn[x, z + 1] = 9;
+                        canSpawn[x, z - 1] = 9;
+
+                        if (z == 2)
+                        {
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z + 3] = 9;
+                        }
+                        else if (z == roomSizeZ - 3)
+                        {
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z - 3] = 9;
+                        }
+                        else if (z > 3 && z < roomSizeZ - 4)
+                        {
+                            canSpawn[x, z - 2] = 9;
+                            canSpawn[x, z - 3] = 9;
+                            canSpawn[x, z + 2] = 9;
+                            canSpawn[x, z + 3] = 9;
+                        }
+                        wFurnitureX = x;
+                        wFurnitureZ = z;
                     }
-                    else if (z == roomSizeZ - 1 && !wallFurnitureSpawned || z == roomSizeZ - 1 && x == roomSizeX - 1 && !wallFurnitureSpawned)
+                    else if (z == roomSizeZ - 1 && canSpawn[x, z] == 0 || z == roomSizeZ - 1 && x == roomSizeX - 1 && canSpawn[x, z] == 0)
                     {
                         ImprovedInstantiate(wallFurniture[randomWallFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, 90, 0));
-                            wallFurnitureSpawned = true;
-                            wFurnitureX = x;
-                            wFurnitureZ = z;
+                        //wallFurnitureSpawned = true;
+                        canSpawn[x, z] = 9;
+                        canSpawn[x + 1, z] = 9;
+                        canSpawn[x - 1, z] = 9;
+
+                        if (x == 2)
+                        {
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x + 3, z] = 9;
+                        }
+                        else if (x == roomSizeX - 3)
+                        {
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x - 3, z] = 9;
+                        }
+                        else if (x > 3 && x < roomSizeX - 4)
+                        {
+                            canSpawn[x - 2, z] = 9;
+                            canSpawn[x - 3, z] = 9;
+                            canSpawn[x + 2, z] = 9;
+                            canSpawn[x + 3, z] = 9;
+                        }
+                        wFurnitureX = x;
+                        wFurnitureZ = z;
                     }
-                    else if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && canSpawn[x, z] == 0)
+                    else if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && canSpawn[x, z] != 9)
                     {
                         var randomRotation = Random.Range(0, 359);
                         ImprovedInstantiate(furniture[randomFurniture], currentLocation + new Vector3(x, 0, z), new Vector3(0, randomRotation, 0));
-                        randomObjectX = x;
-                        randomobjectZ = z;
 
                         canSpawn[x, z] = 9;
                         canSpawn[x + 1, z] = 9;
