@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 
-public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider
+public class Player_Movement : MonoBehaviour
 {
-    bool Lower;
+    private UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider MP;
     public float sprintTime;
     public bool isRunning = false;
     public bool isMoving;
@@ -18,10 +17,12 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
     public AudioSource andfådd;
     // Update is called once per frame
 
-
-    protected override void Update()
+    private void Start()
     {
-        base.Update();
+        MP = gameObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider>();
+    }
+    void Update()
+    {
         if(Input.GetKey(KeyCode.L))
         {
             isMoving = true;
@@ -73,13 +74,13 @@ public class Player_Movement : UnityEngine.XR.Interaction.Toolkit.ActionBasedCon
     public void Movement_Sprint()
     {
         isRunning = true;
-
-        moveSpeed = moveSpeed * 2;
+        
+        MP.moveSpeed = MP.moveSpeed * 2;
     }
     public void Movement_StopSprint()
     {
         isRunning = false;
-        moveSpeed = moveSpeed / 2;
+        MP.moveSpeed = MP.moveSpeed / 2;
     }
     public void Moveing()
     {   
