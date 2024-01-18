@@ -11,11 +11,19 @@ public class VisualEffects : MonoBehaviour
     float sprint;
     bool isrun;
 
+    public Transform enemyTransform;
+    public AudioSource heartbeatsound;
+    public float maxDistance = 10f;
+
+    public float shakeduration;
+    public float shakeamount;
+
     public AudioSource violin;
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<Camerashake>().shakeDuration = shakeduration;
+        GetComponent<Camerashake>().shakeAmount = shakeamount;
         GetComponent<Player_Movement>().sprintTime = sprint;
         GetComponent<Player_Movement>().isRunning = isrun;
         FindObjectOfType<Camera>();
@@ -39,6 +47,22 @@ public class VisualEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (enemyTransform == null || heartbeatsound == null)
+        {
+            Debug.LogError("Player Transform or AudioSource not assigned.");
+            return;
+        }
+
+        // Beräkna avståndet mellan spelaren och fienden
+        float distance = Vector3.Distance(transform.position, enemyTransform.position);
+
+        // Beräkna relativ volym baserat på avståndet
+        float relativeVolume = Mathf.Clamp01(1 - distance / maxDistance);
+
+        // Uppdatera ljudvolymen
+        heartbeatsound.volume = relativeVolume;
+
         DepthOfField depthOfField;
         if (isrun)
         {
@@ -67,10 +91,18 @@ public class VisualEffects : MonoBehaviour
             RaycastHit _hit = new RaycastHit();
             if (Physics.Raycast(transform.position, transform.forward, out _hit, 10f))
             {
-                if (_hit.transform.tag == "Monster")
-                {
+            if (_hit.transform.tag == "Monster")
+            {
                 violin.Play();
-                }
+                shakeamount = 0.2f;
+                shakeduration = 3;
+            }
+            else
+            {
+                shakeamount = 0.7f;
+                shakeduration = 0;
+            }
+
             }
 
 
