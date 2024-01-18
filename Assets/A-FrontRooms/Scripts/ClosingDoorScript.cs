@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClosingDoorScript : MonoBehaviour
 {
     private float timer = 0.0f;
+    private float nextscripttimer = 0.0f;
     public bool Closingdoor = false;
     [SerializeField]
     OpeningDoorScript openingDoorScript;
@@ -15,7 +16,8 @@ public class ClosingDoorScript : MonoBehaviour
 
     [SerializeField]
     GameObject Doorholder;
-
+    [SerializeField]
+    GameObject HandleCombined;
 
     [SerializeField]
     float xR;
@@ -39,9 +41,12 @@ public class ClosingDoorScript : MonoBehaviour
     private void Start()
     {
         GameObject varGameObject = GameObject.Find("HandleCombined");
-        varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
         varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
+        //varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
+        // varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
         Closingdoor = false;
+        HandleCombined.SetActive(true); 
+
     }
 
     public void Update()
@@ -61,9 +66,12 @@ public class ClosingDoorScript : MonoBehaviour
               //  print("FinishedRotatingClosingDoor");
                 GameObject varGameObject = GameObject.Find("HandleCombined");
                 varGameObject.GetComponent<OpeningDoorScript>().enabled = true;
-                varGameObject.GetComponent<ClosingDoorScript>().enabled = false;
+                nextscripttimer += Time.deltaTime;
+                if (nextscripttimer >= 1.0f)
+                {
+                    HandleCombined.SetActive(false);
+                }
 
-             
 
             }
 

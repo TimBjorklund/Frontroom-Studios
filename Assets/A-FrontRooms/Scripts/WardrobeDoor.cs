@@ -15,11 +15,6 @@ public class WardrobeDoor : MonoBehaviour
     {
         Opening = false;
     }
-    public void OpenWardrobeDoor()
-    {
-        
-    
-    }
     public void Update()
     {
         if (Opening == true)
@@ -31,9 +26,9 @@ public class WardrobeDoor : MonoBehaviour
                     Wardrobedoorholderright.transform.Rotate( 0.0f, 90.0f * Time.deltaTime, 0.0f);
                 }
             }
-            else if (gameObject.name == "LeftKnob")
+             if (gameObject.name == "LeftKnob")
             {
-                if (Wardrobedoorholderleft.transform.rotation.eulerAngles.y < -90)
+                if (Wardrobedoorholderleft.transform.rotation.eulerAngles.y > -90)
                 {
                     Wardrobedoorholderleft.transform.Rotate( 0.0f, -90.0f * Time.deltaTime, 0.0f);
                 }

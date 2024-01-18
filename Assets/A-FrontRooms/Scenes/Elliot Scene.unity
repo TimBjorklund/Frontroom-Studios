@@ -213,7 +213,8 @@ GameObject:
   - component: {fileID: 96395162}
   - component: {fileID: 96395161}
   - component: {fileID: 96395160}
-  - component: {fileID: 96395163}
+  - component: {fileID: 96395165}
+  - component: {fileID: 96395164}
   m_Layer: 0
   m_Name: LeftKnob
   m_TagString: Untagged
@@ -229,8 +230,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96395158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3382365, y: -0.08415031, z: -0.41383106}
-  m_LocalScale: {x: 0.2406646, y: 0.0577743, z: 2.1308782}
+  m_LocalPosition: {x: -0.3382365, y: -0.08415031, z: 0.25}
+  m_LocalScale: {x: 0.2366664, y: 0.0577743, z: 3.600332}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 174062256}
@@ -299,7 +300,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96395158}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &96395163
+--- !u!114 &96395164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96395158}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2c850d6066ac34a962ed50f1468b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClosingWardoor: 0
+  openWarLeft: {fileID: 96395165}
+  closeWarLeft: {fileID: 96395164}
+  WardrobeHolderLeft: {fileID: 2131935420}
+--- !u!114 &96395165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,11 +325,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 96395158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fce0fc7052d614992093ff5ebf2745, type: 3}
+  m_Script: {fileID: 11500000, guid: 1815c37a9224fb24280fac69cfd65ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wardrobedoorholderright: {fileID: 948160836}
-  Wardrobedoorholderleft: {fileID: 2131935420}
+  OpeningWardoor: 0
+  openWarLeft: {fileID: 96395165}
+  closeWarLeft: {fileID: 96395164}
+  WardrobeHolderLeft: {fileID: 2131935420}
 --- !u!1 &130335233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3405,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1068844674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3341217592421440903, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+  m_PrefabInstance: {fileID: 9184851778064045658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1076039751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,7 +4195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383703587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.31, y: 1.354, z: 2.949}
+  m_LocalPosition: {x: -3.99, y: 1.386, z: 3.149}
   m_LocalScale: {x: 0.15147, y: 0.15147, z: 0.15147}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5375,7 +5399,8 @@ GameObject:
   - component: {fileID: 1751533815}
   - component: {fileID: 1751533814}
   - component: {fileID: 1751533813}
-  - component: {fileID: 1751533816}
+  - component: {fileID: 1751533818}
+  - component: {fileID: 1751533817}
   m_Layer: 0
   m_Name: RightKnob
   m_TagString: Untagged
@@ -5391,8 +5416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751533811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.34713176, y: -0.08621707, z: -0.39204982}
-  m_LocalScale: {x: 0.23666637, y: 0.0577743, z: 2.1308782}
+  m_LocalPosition: {x: 0.34713176, y: -0.08621707, z: 0.21}
+  m_LocalScale: {x: 0.23666637, y: 0.0577743, z: 3.6003318}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 458717191}
@@ -5461,7 +5486,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751533811}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1751533816
+--- !u!114 &1751533817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751533811}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02de3c74b96dbe41996bdb7d67c3b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClosingWardoor: 0
+  openWarRight: {fileID: 1751533818}
+  closeWarRight: {fileID: 1751533817}
+  WardrobeHolderRight: {fileID: 948160836}
+--- !u!114 &1751533818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5470,11 +5511,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1751533811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fce0fc7052d614992093ff5ebf2745, type: 3}
+  m_Script: {fileID: 11500000, guid: d7d3e3796dad2a642b6bed4548c8da50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wardrobedoorholderright: {fileID: 948160836}
-  Wardrobedoorholderleft: {fileID: 2131935420}
+  OpeningWardoor: 0
+  openWarRight: {fileID: 1751533818}
+  closeWarRight: {fileID: 1751533817}
+  WardrobeHolderRight: {fileID: 948160836}
 --- !u!114 &1770116285 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2402218411715123965, guid: 3044f71f7b525e847bdbe12310070b79, type: 3}
@@ -6936,6 +6979,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3341217592421440905, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341217592421440905, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+      propertyPath: HandleCombined
+      value: 
+      objectReference: {fileID: 1068844674}
+    - target: {fileID: 3341217592421440906, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341217592421440906, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+      propertyPath: HandleCombined
+      value: 
+      objectReference: {fileID: 1068844674}
+    - target: {fileID: 3341217592421440908, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3341217593641374730, guid: c8b8275dfec027747b3d30675ce84fb4, type: 3}
       propertyPath: m_InteractionManager
       value: 

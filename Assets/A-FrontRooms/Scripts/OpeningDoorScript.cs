@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpeningDoorScript : MonoBehaviour
 {
     private float timer = 0.0f;
+    private float nextscripttimer = 0.0f;
     public bool Openingdoor = false;
     [SerializeField]
     OpeningDoorScript openingDoorScript;
@@ -15,6 +16,8 @@ public class OpeningDoorScript : MonoBehaviour
 
     [SerializeField]
     GameObject Doorholder;
+    [SerializeField]
+    GameObject HandleCombined;
 
     [SerializeField]
     float xR;
@@ -38,9 +41,11 @@ public class OpeningDoorScript : MonoBehaviour
     private void Start()
     {
         GameObject varGameObject = GameObject.Find("HandleCombined");
-        varGameObject.GetComponent<OpeningDoorScript>().enabled = true;
         varGameObject.GetComponent<ClosingDoorScript>().enabled = false;
+      //  varGameObject.GetComponent<OpeningDoorScript>().enabled = true;
+        // varGameObject.GetComponent<ClosingDoorScript>().enabled = false;
         Openingdoor = false;
+        HandleCombined.SetActive(true); ;
     }
 
     public void Update()
@@ -60,7 +65,13 @@ public class OpeningDoorScript : MonoBehaviour
                 //print("FinishedRotatingOpeningDoor");
                 GameObject varGameObject = GameObject.Find("HandleCombined");
                 varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
-                varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
+                //does not reset the enable for ClosingDoorScript, so when OpeningDoorScript gets enabled it will still have ClosingDoorScript as true from start;
+                nextscripttimer += Time.deltaTime;
+                if(nextscripttimer >= 1.0f)
+                {
+                    HandleCombined.SetActive(false);
+                }
+
                
 
             }
