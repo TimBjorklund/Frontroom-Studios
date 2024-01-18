@@ -6,12 +6,14 @@ public class FurnitureSpawnTesting : AddedCommands
 {
     public int spawnChance = 15;
 
-    public int roomSizeX = 15;
-    public int roomSizeZ = 15;
+    public float roomSizeX;
+    public float roomSizeZ;
     public int wallHeight = 3;
 
-    int wallLenghtX;
-    int wallLenghtZ;
+    float wallLenghtX;
+    float wallLenghtZ;
+
+    int lampCount = 0;
 
     int wFurnitureX = -10;
     int wFurnitureZ = -10;
@@ -19,6 +21,7 @@ public class FurnitureSpawnTesting : AddedCommands
     public GameObject floor;
     public GameObject wall;
 
+    public GameObject lamp;
     [SerializeField]
     GameObject[] furniture;
     [SerializeField]
@@ -26,17 +29,21 @@ public class FurnitureSpawnTesting : AddedCommands
 
     Vector3 currentLocation;
 
-    int[,] canSpawn;
+    float[,] canSpawn;
     // Start is called before the first frame update
     void Start()
     {
+        /*
         roomSizeX = Random.Range(7,30);
         roomSizeZ = Random.Range(7, 30);
+        */
+        roomSizeX = gameObject.transform.localScale.x;
+        roomSizeZ = gameObject.transform.localScale.z;
 
         wallLenghtX = roomSizeX;
         wallLenghtZ = roomSizeZ;
 
-        canSpawn = new int[roomSizeX, roomSizeZ];
+        canSpawn = new float[(int)roomSizeX, (int)roomSizeZ];
         for (int x = 0; x < roomSizeX; x++)
         {
             for (int y = 0; y < roomSizeZ; y++)
@@ -45,8 +52,8 @@ public class FurnitureSpawnTesting : AddedCommands
             }
         }
         currentLocation = gameObject.transform.position - new Vector3(roomSizeX / 2, 0, roomSizeZ / 2);
-        CreateFloor();
-        CreateWalls();
+        //CreateFloor();
+        //CreateWalls();
         SpawnInterior();
     }
 
@@ -55,11 +62,13 @@ public class FurnitureSpawnTesting : AddedCommands
     {
 
     }
+    /* disabled för vernissage, vi skapar rummen själva
     void CreateFloor()
     {
         GameObject newObject = Instantiate(floor, currentLocation + new Vector3(roomSizeX / 2, -0.5f, roomSizeZ / 2), Quaternion.identity);
         newObject.transform.localScale = new Vector3(roomSizeX, 1, roomSizeZ);
     }
+    
     void CreateWalls()
     {
         for (int i = 0; i < 4; i++)
@@ -68,9 +77,17 @@ public class FurnitureSpawnTesting : AddedCommands
             {
                 for (int wallCount = 1; wallCount < wallLenghtX; wallCount++)
                 {
-                    GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, 0.49f), Quaternion.identity);
-                    newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
-                    newObject.name = "wallX1 " + wallCount;
+                    if (wallCount == wallLenghtX / 2)
+                    {
+
+                    }
+                    else
+                    {
+                        GameObject newObject = Instantiate(wall, currentLocation + new Vector3(wallCount, wallHeight / 2, 0.49f), Quaternion.identity);
+                        newObject.transform.localScale = new Vector3(1, wallHeight, 0.45f);
+                        newObject.name = "wallX1 " + wallCount;
+
+                    }
                 }
             }
             else if (i == 1)
@@ -106,6 +123,7 @@ public class FurnitureSpawnTesting : AddedCommands
 
         }
     }
+    */
     void SpawnInterior()
     {
         //x = 0, x = 15, z = 0, z = 15 - det här är vägg slots, när x = 0 så är alla z värden vägg.
@@ -123,7 +141,7 @@ public class FurnitureSpawnTesting : AddedCommands
                     var randomWallFurniture = Random.Range(0, wallFurniture.Length);
                     Debug.Log("spawn");
 
-                    if (x == 1 && z == 1 || x == roomSizeX - 1 && z == roomSizeZ - 1 || x == 1 && z == roomSizeZ - 1 || z == 1 && x == roomSizeX - 1)
+                    if (x == 1 && z == 1 || x == 2 && z == 1|| x == roomSizeX - 1 && z == roomSizeZ - 1 || x == roomSizeX - 2 && z == roomSizeZ - 1 || x == 1 && z == roomSizeZ - 1 || x == 2 && z == roomSizeZ - 1 || z == 1 && x == roomSizeX - 1 || z == 2 && x == roomSizeX - 1)
                     {
                         //wallFurnitureSpawned = true;
                         canSpawn[x, z] = 9;
@@ -266,8 +284,20 @@ public class FurnitureSpawnTesting : AddedCommands
                         canSpawn[x + 1, z - 1] = 9;
                         canSpawn[x - 1, z - 1] = 9;
                     }
+                    int randomLampSpawn = Random.Range(0, 5);
+                    if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && randomLampSpawn == 1)
+                    {
+                        GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(x, wallHeight, z), Quaternion.Euler(180, 0, 0));
+                        newObject.transform.localScale = new Vector3(70, 15, 70);
+                        lampCount++;
+                    }
                 }
             }
+        }
+        if (lampCount == 0)
+        {
+            GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(roomSizeX / 2, wallHeight, roomSizeZ / 2), Quaternion.Euler(180, 0, 0));
+            newObject.transform.localScale = new Vector3(70, 15, 70);
         }
     }
 }
