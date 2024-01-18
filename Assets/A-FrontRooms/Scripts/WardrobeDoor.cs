@@ -33,15 +33,15 @@ public class WardrobeDoor : MonoBehaviour
             }
             else if (gameObject.name == "LeftKnob")
             {
-                if (Wardrobedoorholderleft.transform.rotation.eulerAngles.y > -90)
+                if (Wardrobedoorholderleft.transform.rotation.eulerAngles.y < -90)
                 {
                     Wardrobedoorholderleft.transform.Rotate( 0.0f, -90.0f * Time.deltaTime, 0.0f);
                 }
             }
         }
+
     }
-
-
+     
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Test")

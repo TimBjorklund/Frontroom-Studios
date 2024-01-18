@@ -173,6 +173,7 @@ MonoBehaviour:
   wallHeight: 3
   floor: {fileID: 3429091993259607191, guid: d368e3e64972c434d9b9aa5153c28330, type: 3}
   wall: {fileID: 7181224828068975118, guid: 39fdbe6e7721400409490d05103980d4, type: 3}
+  lampa: {fileID: 4901157803301096335, guid: 7b29e448449508146baa99c8ffa7cdf4, type: 3}
   furniture:
   - {fileID: 588814091766989737, guid: 77b0c60bf93510a4fb59e1b0e4e08199, type: 3}
   wallFurniture:
