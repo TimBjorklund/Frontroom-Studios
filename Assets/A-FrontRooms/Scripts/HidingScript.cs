@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class HidingScript : MonoBehaviour
 {
-    private bool Hiding;
-    Pathfinding.MonsterTargeting monstertargeting;
+    public bool Hiding;
     [SerializeField]
-    GameObject Player;
+    Pathfinding.MonsterTargeting monstertargeting;
     public bool Untargetable;
 
     private void Start()
@@ -20,23 +19,25 @@ public class HidingScript : MonoBehaviour
     {
         if(Hiding == true)
         {
+            Untargetable = true;
           //  Player != detectable;
         }
         else
         {
+            Untargetable = false;
             //Player = detectable;
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("MainCamera"))     
+       if (collision.CompareTag("MainCamera") || collision.gameObject.name == "Test")     
         {
             Hiding = true;
         }
     }
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.CompareTag("MainCamera"))
+        if (collision.CompareTag("MainCamera") || collision.gameObject.name == "Test")
         {
             Hiding = false;
         }

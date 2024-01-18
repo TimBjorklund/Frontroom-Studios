@@ -30,7 +30,7 @@ public class ClosingDoorScript : MonoBehaviour
         {
             if (collision.gameObject.name == "Left Controller" || collision.gameObject.name == "Right Controller" || collision.gameObject.name == "Test")
             {
-                print("ClosingDoor");
+               // print("ClosingDoor");
                 Closingdoor = true;
             }
         }
@@ -48,17 +48,17 @@ public class ClosingDoorScript : MonoBehaviour
     {
         if (Closingdoor == true)
         {
-            print("RotatingClosingDoor");
+            //print("RotatingClosingDoor");
             if (Doorholder.transform.rotation.eulerAngles.y > -90) //-90
             {
-                print("Hola");
+              
                 Doorholder.transform.Rotate(xR, -90 * Time.deltaTime, zR); //-180.0f
             }
             timer += Time.deltaTime;
             if (timer >= 1.0f)
             {
                 Closingdoor = false;
-                print("FinishedRotatingClosingDoor");
+              //  print("FinishedRotatingClosingDoor");
                 GameObject varGameObject = GameObject.Find("HandleCombined");
                 varGameObject.GetComponent<OpeningDoorScript>().enabled = true;
                 varGameObject.GetComponent<ClosingDoorScript>().enabled = false;

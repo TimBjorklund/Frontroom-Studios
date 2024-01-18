@@ -29,7 +29,7 @@ public class OpeningDoorScript : MonoBehaviour
         { 
             if (collision.gameObject.name == "Left Controller" || collision.gameObject.name == "Right Controller" || collision.gameObject.name == "Test")
             {
-               print("OpeningDoor");
+               //print("OpeningDoor");
               Openingdoor = true;
             }
         }
@@ -47,7 +47,7 @@ public class OpeningDoorScript : MonoBehaviour
     {
         if (Openingdoor == true)
         {
-            print("RotatingOpeningDoor");
+            //print("RotatingOpeningDoor");
             if (Doorholder.transform.rotation.eulerAngles.z < 90) // yr = 90f
             {
                 Doorholder.transform.Rotate(xR, 90f * Time.deltaTime, zR); // yR = 90f
@@ -57,7 +57,7 @@ public class OpeningDoorScript : MonoBehaviour
             if (timer >= 1.0f)
             {
                 Openingdoor = false;
-                print("FinishedRotatingOpeningDoor");
+                //print("FinishedRotatingOpeningDoor");
                 GameObject varGameObject = GameObject.Find("HandleCombined");
                 varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
                 varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
