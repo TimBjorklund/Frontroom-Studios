@@ -46,9 +46,16 @@ public class FurnitureSpawnTesting : AddedCommands
         canSpawn = new float[(int)roomSizeX, (int)roomSizeZ];
         for (int x = 0; x < roomSizeX; x++)
         {
-            for (int y = 0; y < roomSizeZ; y++)
+            for (int z = 0; z < roomSizeZ; z++)
             {
-                canSpawn[x, y] = 0;
+                if (x == roomSizeX / 2 && z == 1|| x == roomSizeX / 2 - 1 && z == 1|| x == roomSizeX / 2 + 1 && z == 1 || x == roomSizeX / 2 && z == roomSizeZ - 1 || x == roomSizeX / 2 - 1 && z == roomSizeZ - 1 || x == roomSizeX / 2 + 1 && z == roomSizeZ - 1 || z == roomSizeZ / 2 && z == roomSizeX - 1 || z == roomSizeZ / 2 - 1 && x == roomSizeX - 1 || z == roomSizeZ / 2 + 1 && x == roomSizeX - 1 || z == roomSizeZ / 2 && x == 1 || z == roomSizeZ / 2 - 1 && x == 1 || z == roomSizeZ / 2 + 1 && x == 1)
+                {
+                    canSpawn[x, z] = 9;
+                }
+                else
+                {
+                    canSpawn[x, z] = 0;
+                }
             }
         }
         currentLocation = gameObject.transform.position - new Vector3(roomSizeX / 2, 0, roomSizeZ / 2);
@@ -285,10 +292,10 @@ public class FurnitureSpawnTesting : AddedCommands
                         canSpawn[x - 1, z - 1] = 9;
                     }
                     int randomLampSpawn = Random.Range(0, 5);
-                    if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && randomLampSpawn == 1)
+                    if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && randomLampSpawn == 1 && lampCount < 4)
                     {
-                        GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(x, wallHeight, z), Quaternion.Euler(180, 0, 0));
-                        newObject.transform.localScale = new Vector3(70, 15, 70);
+                        GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(x, wallHeight + 1.8f, z), Quaternion.Euler(0, 0, 0));
+                        newObject.transform.localScale = new Vector3(1, 1, 1);
                         lampCount++;
                     }
                 }
@@ -296,8 +303,8 @@ public class FurnitureSpawnTesting : AddedCommands
         }
         if (lampCount == 0)
         {
-            GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(roomSizeX / 2, wallHeight, roomSizeZ / 2), Quaternion.Euler(180, 0, 0));
-            newObject.transform.localScale = new Vector3(70, 15, 70);
+            GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(roomSizeX / 2, wallHeight + 1.8f, roomSizeZ / 2), Quaternion.Euler(0, 0, 0));
+            newObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

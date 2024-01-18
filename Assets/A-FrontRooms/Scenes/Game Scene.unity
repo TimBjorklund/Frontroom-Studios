@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7018,7 +7018,7 @@ MonoBehaviour:
   wallHeight: 3
   floor: {fileID: 0}
   wall: {fileID: 0}
-  lamp: {fileID: 4901157803301096335, guid: 7b29e448449508146baa99c8ffa7cdf4, type: 3}
+  lamp: {fileID: 8184734753713985213, guid: fc6b56c9b76b0dc40b4598f7e90253f1, type: 3}
   furniture:
   - {fileID: 588814091766989737, guid: 77b0c60bf93510a4fb59e1b0e4e08199, type: 3}
   - {fileID: 2178177090706932749, guid: f1a6745bab0f8a14fbce24e81b4d5e1d, type: 3}
@@ -17392,12 +17392,13 @@ MonoBehaviour:
   wallHeight: 3
   floor: {fileID: 0}
   wall: {fileID: 0}
-  lamp: {fileID: 4901157803301096335, guid: 7b29e448449508146baa99c8ffa7cdf4, type: 3}
+  lamp: {fileID: 318722716960253825, guid: fc6b56c9b76b0dc40b4598f7e90253f1, type: 3}
   furniture:
   - {fileID: 588814091766989737, guid: 77b0c60bf93510a4fb59e1b0e4e08199, type: 3}
   - {fileID: 2178177090706932749, guid: f1a6745bab0f8a14fbce24e81b4d5e1d, type: 3}
   wallFurniture:
   - {fileID: 879586858387135907, guid: 93693064101b0214fa13d0fe85d8b442, type: 3}
+  - {fileID: 4921293164250244380, guid: e37c1083dc4f5b746971aa3a8b2d352a, type: 3}
 --- !u!4 &1371753430
 Transform:
   m_ObjectHideFlags: 0
@@ -17407,7 +17408,7 @@ Transform:
   m_GameObject: {fileID: 1371753428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12, y: 1, z: 14}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 664394650}
@@ -23979,14 +23980,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005058361}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.21092586, y: -0.16338277, z: 0.035782523, w: 0.96308666}
+  m_LocalPosition: {x: 2.57, y: 2.41, z: -5.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.707, y: -19.257, z: 0}
 --- !u!1 &2027331542
 GameObject:
   m_ObjectHideFlags: 0

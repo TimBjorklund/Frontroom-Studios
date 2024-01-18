@@ -3,7 +3,10 @@ guid: 434844e0f3c8a164da7aa81ea7bfe499
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - floor: {instanceID: 0}
+  - wall: {instanceID: 0}
+  - lamp: {fileID: 318722716960253825, guid: fc6b56c9b76b0dc40b4598f7e90253f1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
