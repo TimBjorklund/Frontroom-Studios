@@ -292,7 +292,7 @@ public class FurnitureSpawnTesting : AddedCommands
                         canSpawn[x - 1, z - 1] = 9;
                     }
                     int randomLampSpawn = Random.Range(0, 5);
-                    if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && randomLampSpawn == 1 && lampCount < 4)
+                    if (x > 1 && x < roomSizeX - 1 && z > 1 && z < roomSizeZ - 1 && randomLampSpawn == 1 && lampCount < 3)
                     {
                         GameObject newObject = Instantiate(lamp, currentLocation + new Vector3(x, wallHeight + 1.8f, z), Quaternion.Euler(0, 0, 0));
                         newObject.transform.localScale = new Vector3(1, 1, 1);
