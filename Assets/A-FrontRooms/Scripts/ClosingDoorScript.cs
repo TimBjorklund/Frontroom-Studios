@@ -37,18 +37,39 @@ public class ClosingDoorScript : MonoBehaviour
             }
         }
     }
-
+    
     private void Start()
+    {
+        Closingdoor = false;
+        GameObject varGameObject = GameObject.Find("HandleCombined");
+        if (varGameObject.GetComponent<ClosingDoorScript>().enabled == true)
+        {
+           // varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
+            //varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
+            // varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
+         
+            //Reset();
+        }
+        
+    }
+
+    public void Reset()
+    {
+        this.enabled = true;
+        Closingdoor = true;
+        GetComponent<OpeningDoorScript>().enabled = false;
+        print("Openingdoor = true");
+        print("ClosingDoor = false");
+    }
+    /*
+    void Reset()
     {
         GameObject varGameObject = GameObject.Find("HandleCombined");
         varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
-        //varGameObject.GetComponent<ClosingDoorScript>().enabled = true;
-        // varGameObject.GetComponent<OpeningDoorScript>().enabled = false;
-        Closingdoor = false;
-        HandleCombined.SetActive(true); 
-
+        print("Openingdoor = false");
+        print("Closingdoor = true");
     }
-
+    */
     public void Update()
     {
         if (Closingdoor == true)
@@ -64,12 +85,10 @@ public class ClosingDoorScript : MonoBehaviour
             {
                 Closingdoor = false;
               //  print("FinishedRotatingClosingDoor");
-                GameObject varGameObject = GameObject.Find("HandleCombined");
-                varGameObject.GetComponent<OpeningDoorScript>().enabled = true;
+                GetComponent<OpeningDoorScript>().Reset();
                 nextscripttimer += Time.deltaTime;
                 if (nextscripttimer >= 1.0f)
                 {
-                    HandleCombined.SetActive(false);
                 }
 
 
