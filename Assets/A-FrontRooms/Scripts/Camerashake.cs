@@ -28,6 +28,7 @@ public class Camerashake : MonoBehaviour
 	void OnEnable()
 	{
 		originalPos = camTransform.localPosition;
+		
 	}
 
 	void Update()

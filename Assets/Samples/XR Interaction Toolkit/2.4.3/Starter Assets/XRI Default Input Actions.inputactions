@@ -2197,65 +2197,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "XRI TimB Testing",
-            "id": "c3ed341c-7a7d-4168-be34-0f84d5f865df",
-            "actions": [
-                {
-                    "name": "JoyStickPressed",
-                    "type": "Button",
-                    "id": "cc2c5d88-e2a3-4a17-9475-356b107adfd6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "JoyStickReleased",
-                    "type": "Button",
-                    "id": "ef2ed88d-f962-4ff1-8d03-8fa0d59d96b9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "ba1e98ed-d872-4db3-8a1e-7037b8df5df0",
-                    "path": "<PXR_Controller>{RightHand}/thumbstickClicked",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "JoyStickPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b346a127-0815-43bc-a455-5bdbeb3aecf0",
-                    "path": "<Keyboard>/a",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "JoyStickPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bed561e-ce4b-4f7d-8e6f-8d10acf4455e",
-                    "path": "<PXR_Controller>{RightHand}/thumbstickClicked",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "JoyStickReleased",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [
