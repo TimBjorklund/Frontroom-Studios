@@ -15,16 +15,16 @@ MonoBehaviour:
   m_LayerNames:
   - Default
   - Key
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MoonKey
+  - TriKey
+  - HexKey
+  - SquareKey
+  - StarKey
+  - MoonLock
+  - HexLock
+  - TriLock
+  - SquareLock
+  - StarLock
   - 
   - 
   - 

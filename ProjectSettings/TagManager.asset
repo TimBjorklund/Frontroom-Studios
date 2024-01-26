@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - Moonkey
+  - HexKey
+  - Trikey
+  - SquareKey
+  - Starkey
   layers:
   - Default
   - TransparentFX
@@ -13,16 +18,16 @@ TagManager:
   - Water
   - UI
   - Walls
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MoonKey
+  - HexKey
+  - Trikey
+  - SquareKey
+  - StarKey
+  - MoonLock
+  - HexLock
+  - TriLock
+  - SquareLock
+  - StarLock
   - 
   - 
   - 
