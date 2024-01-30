@@ -105,7 +105,8 @@ public class MapGenerationTesting : AddedCommands
                 }
                 else if (groundSpawn[x, z] == -4)
                 {
-                    ImprovedInstantiate(generator, currentLocation + new Vector3(x, 0, z), new Vector3(0, 0, 0));
+                    GameObject Generator = Instantiate(generator, currentLocation + new Vector3(x, 0 ,z), Quaternion.Euler(0,0,0));
+                    Generator.transform.parent = gameObject.transform.parent;
                 }
                 if (groundSpawn[x, z] == 0)
                 {
