@@ -11,20 +11,21 @@ public class KeyHoleScript : MonoBehaviour
 
     [SerializeField]
     XRSocketInteractor socket;
+    [SerializeField] 
+    public LayerMask objectLayern;
+    [SerializeField]
+    GameObject rightKey;
 
     [SerializeField]
     GameObject Doorholder;
     [SerializeField]
     GameObject Lock;
 
-
-
     [SerializeField]
     private float  floorPoint;
 
     public bool Unlocked = false;
 
-    public bool rightKey;
 
     void Update()
     {
@@ -36,10 +37,11 @@ public class KeyHoleScript : MonoBehaviour
         }
  
       
-        if (socket.hasHover)
+        if (socket.hasHover) //&&  object in socket has layer or name)
         {
-            {
-                Unlocked = true;
+            IXRSelectInteractable rightKey = socket.GetOldestInteractableSelected();
+
+            Unlocked = true;
                 if (Lock.transform.position.y > floorPoint)
                 {
                     Vector3 temp = new Vector3(0, 3f * Time.deltaTime, 0);
@@ -49,24 +51,10 @@ public class KeyHoleScript : MonoBehaviour
                 {
                     Lock.transform.Rotate(0f, 0f, 180.0f * Time.deltaTime); //180.0f
                 }
-            }
-          
-
-
-            //OpenDoor();
+            
         }
     }
-    
-    /*
-    public void OpenDoor()
-    {
-        if (Doorholder.transform.rotation.eulerAngles.y < yR) //90
-        {
-            Doorholder.transform.Rotate(xR, yR * Time.deltaTime, zR);  //90.0f
-        }
-        
-    }
-    */
+
 
 
 
