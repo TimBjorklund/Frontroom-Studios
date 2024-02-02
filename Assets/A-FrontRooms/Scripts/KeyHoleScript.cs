@@ -11,8 +11,6 @@ public class KeyHoleScript : MonoBehaviour
 
     [SerializeField]
     XRSocketInteractor socket;
-    [SerializeField] 
-    public LayerMask objectLayern;
     [SerializeField]
     GameObject rightKey;
 
@@ -35,11 +33,10 @@ public class KeyHoleScript : MonoBehaviour
         {
             Unlocked = true;
         }
- 
-      
-        if (socket.hasHover) //&&  object in socket has layer or name)
+
+
+        if (socket.hasHover && rightKey == socket.firstInteractableSelected.transform.gameObject) 
         {
-            IXRSelectInteractable rightKey = socket.GetOldestInteractableSelected();
 
             Unlocked = true;
                 if (Lock.transform.position.y > floorPoint)
