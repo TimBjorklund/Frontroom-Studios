@@ -29,7 +29,7 @@ public class KeyHoleScript : MonoBehaviour
     {
 
         //Om specfik nyckelnamn socketerar med specfik låsnamn då, gör bla bla bla
-        if (Lock == null)
+        if (rightKey == null)
         {
             Unlocked = true;
         }
